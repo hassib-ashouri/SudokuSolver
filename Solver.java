@@ -34,15 +34,23 @@ public class Solver
 		if (eval == Evaluation.ABANDON)
 		{
 			// Abandon evaluation of this illegal board.
+			return;
 		}
 		else if (eval == Evaluation.ACCEPT)
 		{
 			// A complete and legal solution. Add it to solutions.
+			this.solutions.add(grid);
+			return;
 		}
 		else
 		{
 			// Here if eval == Evaluation.CONTINUE. Generate all 9 possible next grids. Recursively 
 			// call solveRecurse() on those grids.
+			ArrayList<Grid> possibleSolutions = grid.next9Grids();
+			for(Grid g: possibleSolutions)
+			{
+				this.solveRecurse(g);
+			}
 		}
 	}
 	
@@ -55,7 +63,19 @@ public class Solver
 	//
 	public Evaluation evaluate(Grid grid)
 	{
-
+		if( grid.isLegal() )
+		{
+			if( grid.isFull() )
+			{
+				return Evaluation.ACCEPT;
+			}
+			else
+			{
+				return Evaluation.CONTINUE;
+			}
+		}
+		
+		return Evaluation.ABANDON;
 
 	}
 

@@ -90,9 +90,15 @@ public class Solver
 	{
 		Grid g = TestGridSupplier.getPuzzle1();		// or any other puzzle
 		Solver solver = new Solver(g);
-		System.out.println(“Will solve\n” + g);
+		System.out.println("Will solve\n"+ g);
 		solver.solve();
 		
 		// Print out your solution, or test if it equals() the solution in TestGridSupplier.
+		
+		for(Grid G: solver.getSolutions())
+		{
+			System.out.println(G + "\n");
+			
+		}
 	}
 }

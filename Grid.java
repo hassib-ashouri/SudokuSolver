@@ -265,11 +265,15 @@ public class Grid
 		for(int i = 0 ; i < arr.length ; i++ )
 		{
 			temp = arr[i];
-			for(int j = i + 1 ; j < arr.length ; j ++)
+			if(temp != 0)
 			{
-				if(temp == arr[j])
-					return true;
+				for(int j = i + 1 ; j < arr.length ; j ++)
+				{
+					if( temp == arr[j] )
+						return true;
+				}
 			}
+		
 		}
 
 		return false;
